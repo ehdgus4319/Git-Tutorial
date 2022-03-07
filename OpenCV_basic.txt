@@ -1,0 +1,24 @@
+#include <opencv2/opencv.hpp>
+#include <iostream>
+
+using namespace cv;
+using namespace std;
+
+int main()
+{
+	Mat img_color;                               // 행렬(Matrix)의 형태로 이미지할 객체 선언
+
+	img_color = imread("img.jpg", IMREAD_COLOR); // img_color 에 컬러 포맷으로 이미지 저장
+
+	namedWindow("Color");                        // 윈도우 타이틀창 Color으로 지정 (생략해도 됨)
+	imshow("Color", img_color);                  // 윈도우 타이틀이 Color인 Mat 객체 img_color에 저장된 이미지 보여줌
+
+
+	Mat img_gray;                                // img_gray 객체 선언
+
+	cvtColor(img_color, img_gray, COLOR_BGR2GRAY); // img_color을 그레이 컬러로 변환하고 img_gray객체로 저장함.
+	imshow("Grayscale", img_gray);               // Grayscale 윈도우 타이틀인 Mat 객체 img_gray에 저장된 이미지 보여줌
+
+	waitKey(0);                                  // 종료
+	destroyAllWindows();
+}
